@@ -1,0 +1,20 @@
+// Prisma schema for Azure SQL Database
+// This schema is minimal since we're querying metadata directly
+// We'll use raw SQL queries to fetch table/column/relationship info
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// Dummy model - required by Prisma to generate client
+// We don't actually use this model, we only use raw SQL queries
+model Dummy {
+  id Int @id @default(0)
+
+  @@map("_dummy")
+}
